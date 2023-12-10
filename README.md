@@ -1,1 +1,2 @@
-#Nyari apa bg
+#credit
+github.com/AlipBot
