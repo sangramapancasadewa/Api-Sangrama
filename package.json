@@ -49,6 +49,7 @@
     "g-i-s": "^2.1.6",
     "generate-api-key": "^1.0.2",
     "google-it": "^1.6.4",
+    "got": "^11.8.3",
     "html-to-text": "^9.0.3",
     "image-url-validator": "^1.0.4",
     "is-gmail": "^1.0.0",
@@ -75,6 +76,7 @@
     "ssl-express-www": "^3.0.8",
     "tinyurl": "^1.1.7",
     "translate-google": "^1.5.0",
+    "vm": "^0.1.0",
     "yt-search": "^2.10.3",
     "ytdl-core": "^4.11.5"
   }
