@@ -135,7 +135,7 @@ router.get('/api/dowloader/igstorydowloader', cekKey, async (req, res, next) => 
 	var hasil = await igStory(username)
 	limitapikey(req.query.apikey)
 	try {
-		res.json({
+        res.json({
              status: true,
              creator: `${creator}`,
              result: hasil
