@@ -1700,20 +1700,19 @@ router.get('/api/info/githubstalk', cekKey, async (req, res, next) => {
 })
 
 router.get('/api/info/waktuksolatmy', cekKey, async (req, res, next) => {
-	sangrama.watuksolatmy()
-	.then(data => {
-		if (!data.Tarikh ) return res.json(loghandler.error)
-		limitapikey(req.query.apikey)
-		res.json({
-			status: true,
-	        creator: `${creator}`,
-			result: data
-		})
-		}).catch(e => {
-			 res.json(loghandler.error)
-})
-})
-
+     try {
+        const data = await watuksolatmy();
+        if (!data.jadwal) return res.json(loghandler.error);
+        limitapikey(req.query.apikey);
+        res.json({
+        status: true,
+        creator: ${creator},
+        result: data
+        });
+        } catch (error) {
+        res.json(loghandler.error);
+        }
+        });
 
 router.get('/api/info/translate', cekKey, async (req, res, next) => {
 	var text = req.query.text
