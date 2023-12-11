@@ -12,7 +12,6 @@ const TinyURL = require('tinyurl');
 const emoji = require("emoji-api");
 const isUrl = require("is-url")
 const { ytMp4, ytMp3 } = require('../lib/y2mate')
-const { igStory, igDownload } = require('../lib/igdl')
 const BitlyClient = require('bitly').BitlyClient
 const canvasGif = require('canvas-gif')
 const { convertStringToNumber } = require('convert-string-to-number'); 
@@ -127,43 +126,6 @@ sangrama.musically(url).then(data => {
   res.json(loghandler.noturl)
 })
 })
-
-
-router.get('/api/dowloader/igstorydowloader', cekKey, async (req, res, next) => {
-	var username = req.query.username
-	if (!username) return res.json({ message: 'masukan parameter username' })
-	var hasil = await igStory(username)
-	limitapikey(req.query.apikey)
-	try {
-        res.json({
-             status: true,
-             creator: `${creator}`,
-             result: hasil
-        })
-	} catch(err) {
-		console.log(err)
-		res.json({ message: 'Ups, error' })
-	}
-})
-
-
-router.get('/api/downloader/igdownloader', cekKey, async (req, res, next) => {
-  const { url } = req.query.url
-  if (!url) {
-    return res.json({ message: 'Masukkan parameter URL' });
-  }
-  limitapikey(req.query.apikey)
-  try {
-    const links = await igDownload(url);
-    res.json({ 
-        status: true,
-	    creator: `${creator}`,
-    	result:	links
-	})
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
 
 
 router.get('/api/dowloader/yt', cekKey, async (req, res, next) => {
